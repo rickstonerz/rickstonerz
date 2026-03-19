@@ -1,0 +1,36 @@
+<svg width="900" height="420" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #0b0f1a; }
+    .core { fill: #111827; stroke: #ff4d4d; stroke-width: 2; }
+    .node { fill: #111827; stroke: #374151; stroke-width: 1.5; }
+    .text-main { fill: #ffffff; font: 700 18px monospace; }
+    .text-sub { fill: #9ca3af; font: 500 12px monospace; }
+    .text-node { fill: #e5e7eb; font: 600 13px monospace; }
+    .link { stroke: #374151; stroke-width: 1.2; opacity: 0.6; }
+    .glow { stroke: #ff4d4d; stroke-width: 2; opacity: 0.8; }
+  </style>
+  <rect width="900" height="420" class="bg"/>
+  <circle cx="450" cy="200" r="55" class="core"/>
+  <text x="450" y="195" text-anchor="middle" class="text-main">SYSTEMS</text>
+  <text x="450" y="215" text-anchor="middle" class="text-main">BUILDER</text>
+  <text x="450" y="60" text-anchor="middle" class="text-sub">50+ systems • 5.5M+ LOC footprint • 3.5+ years</text>
+  <rect x="120" y="120" rx="8" ry="8" width="130" height="40" class="node"/>
+  <text x="185" y="145" text-anchor="middle" class="text-node">AI / AGENTS</text>
+  <rect x="650" y="120" rx="8" ry="8" width="140" height="40" class="node"/>
+  <text x="720" y="145" text-anchor="middle" class="text-node">DECISION</text>
+  <rect x="300" y="300" rx="8" ry="8" width="140" height="40" class="node"/>
+  <text x="370" y="325" text-anchor="middle" class="text-node">SIMULATION</text>
+  <rect x="500" y="300" rx="8" ry="8" width="150" height="40" class="node"/>
+  <text x="575" y="325" text-anchor="middle" class="text-node">INFRASTRUCTURE</text>
+  <rect x="370" y="100" rx="8" ry="8" width="160" height="40" class="node"/>
+  <text x="450" y="125" text-anchor="middle" class="text-node">AUTOMATION</text>
+  <rect x="80" y="280" rx="8" ry="8" width="150" height="40" class="node"/>
+  <text x="155" y="305" text-anchor="middle" class="text-node">SECURITY</text>
+  <line x1="450" y1="200" x2="185" y2="140" class="link"/>
+  <line x1="450" y1="200" x2="720" y2="140" class="link"/>
+  <line x1="450" y1="200" x2="370" y2="320" class="link"/>
+  <line x1="450" y1="200" x2="575" y2="320" class="link"/>
+  <line x1="450" y1="200" x2="450" y2="120" class="link"/>
+  <line x1="450" y1="200" x2="155" y2="300" class="link"/>
+  <text x="450" y="390" text-anchor="middle" class="text-sub">most systems private / iterative / evolving</text>
+</svg>
