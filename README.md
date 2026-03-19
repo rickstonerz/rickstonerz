@@ -30,7 +30,7 @@ I build **complex, interconnected systems** across software, AI, simulation, and
 ## 📊 Output & Experience
 
 - ~225,000 lines of code written (est.)
-- ~18–20 months active development
+- ~2.5+ years active development
 - High iteration velocity with continuous rebuild + optimization cycles
 
 ---
