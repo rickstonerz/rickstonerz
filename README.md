@@ -52,6 +52,8 @@ I build **complex, interconnected systems** across software, AI, simulation, and
 - JavaScript / TypeScript
 - Python
 - C# (Unity)
+- C
+- Shell / Bash
 
 **Tools & Systems**
 - Node.js / Express
