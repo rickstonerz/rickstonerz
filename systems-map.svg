@@ -1,36 +1,138 @@
-<svg width="900" height="420" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .bg { fill: #0b0f1a; }
-    .core { fill: #111827; stroke: #ff4d4d; stroke-width: 2; }
-    .node { fill: #111827; stroke: #374151; stroke-width: 1.5; }
-    .text-main { fill: #ffffff; font: 700 18px monospace; }
-    .text-sub { fill: #9ca3af; font: 500 12px monospace; }
-    .text-node { fill: #e5e7eb; font: 600 13px monospace; }
-    .link { stroke: #374151; stroke-width: 1.2; opacity: 0.6; }
-    .glow { stroke: #ff4d4d; stroke-width: 2; opacity: 0.8; }
-  </style>
-  <rect width="900" height="420" class="bg"/>
-  <circle cx="450" cy="200" r="55" class="core"/>
-  <text x="450" y="195" text-anchor="middle" class="text-main">SYSTEMS</text>
-  <text x="450" y="215" text-anchor="middle" class="text-main">BUILDER</text>
-  <text x="450" y="60" text-anchor="middle" class="text-sub">50+ systems • 5.5M+ LOC footprint • 3.5+ years</text>
-  <rect x="120" y="120" rx="8" ry="8" width="130" height="40" class="node"/>
-  <text x="185" y="145" text-anchor="middle" class="text-node">AI / AGENTS</text>
-  <rect x="650" y="120" rx="8" ry="8" width="140" height="40" class="node"/>
-  <text x="720" y="145" text-anchor="middle" class="text-node">DECISION</text>
-  <rect x="300" y="300" rx="8" ry="8" width="140" height="40" class="node"/>
-  <text x="370" y="325" text-anchor="middle" class="text-node">SIMULATION</text>
-  <rect x="500" y="300" rx="8" ry="8" width="150" height="40" class="node"/>
-  <text x="575" y="325" text-anchor="middle" class="text-node">INFRASTRUCTURE</text>
-  <rect x="370" y="100" rx="8" ry="8" width="160" height="40" class="node"/>
-  <text x="450" y="125" text-anchor="middle" class="text-node">AUTOMATION</text>
-  <rect x="80" y="280" rx="8" ry="8" width="150" height="40" class="node"/>
-  <text x="155" y="305" text-anchor="middle" class="text-node">SECURITY</text>
-  <line x1="450" y1="200" x2="185" y2="140" class="link"/>
-  <line x1="450" y1="200" x2="720" y2="140" class="link"/>
-  <line x1="450" y1="200" x2="370" y2="320" class="link"/>
-  <line x1="450" y1="200" x2="575" y2="320" class="link"/>
-  <line x1="450" y1="200" x2="450" y2="120" class="link"/>
-  <line x1="450" y1="200" x2="155" y2="300" class="link"/>
-  <text x="450" y="390" text-anchor="middle" class="text-sub">most systems private / iterative / evolving</text>
+<svg width="1200" height="520" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#050816"/>
+      <stop offset="55%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#130d22"/>
+    </linearGradient>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff5a5a" stop-opacity="0.9"/>
+      <stop offset="55%" stop-color="#ff5a5a" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ff5a5a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lineHot" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff5a5a"/>
+      <stop offset="50%" stop-color="#ff8a00"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff4d4d"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="tinyGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .title{font:700 28px 'Segoe UI',Arial,sans-serif;fill:#fff;letter-spacing:2px}
+      .subtitle{font:500 13px 'Segoe UI',Arial,sans-serif;fill:#94a3b8;letter-spacing:1px}
+      .stat{font:700 14px 'Consolas','Courier New',monospace;fill:#ffb366}
+      .label{font:600 14px 'Segoe UI',Arial,sans-serif;fill:#e5e7eb;letter-spacing:.5px}
+      .small{font:600 11px 'Consolas','Courier New',monospace;fill:#94a3b8}
+      .nodeText{font:600 12px 'Segoe UI',Arial,sans-serif;fill:#dbe4ee}
+      .box{fill:rgba(255,255,255,0.03);stroke:rgba(255,255,255,0.16);stroke-width:1.2}
+      .thin{stroke:rgba(255,255,255,0.12);stroke-width:1;fill:none}
+      .link{stroke:url(#lineHot);stroke-width:1.5;fill:none;opacity:.34}
+      .flow1{stroke-dasharray:8 10;animation:dash 7s linear infinite}
+      .flow2{stroke-dasharray:4 12;animation:dash 10s linear infinite reverse}
+      .flow3{stroke-dasharray:12 14;animation:dash 13s linear infinite}
+      .pulseCore{animation:pulseCore 2.8s ease-in-out infinite;transform-origin:600px 260px}
+      .pulseRingA{animation:pulseRingA 3.5s ease-in-out infinite;transform-origin:600px 260px}
+      .pulseRingB{animation:pulseRingB 4.6s ease-in-out infinite;transform-origin:600px 260px}
+      .scanline{animation:scan 5s linear infinite}
+      .blinkA{animation:blinkA 1.8s ease-in-out infinite}
+      .blinkB{animation:blinkB 2.6s ease-in-out infinite}
+      .orbit1{animation:orbit1 18s linear infinite;transform-origin:600px 260px}
+      .orbit2{animation:orbit2 26s linear infinite;transform-origin:600px 260px}
+      .floatA{animation:floatA 5s ease-in-out infinite}
+      .floatB{animation:floatB 6.5s ease-in-out infinite}
+      @keyframes dash{to{stroke-dashoffset:-260}}
+      @keyframes pulseCore{0%,100%{transform:scale(1);opacity:.95}50%{transform:scale(1.04);opacity:1}}
+      @keyframes pulseRingA{0%,100%{transform:scale(1);opacity:.25}50%{transform:scale(1.03);opacity:.5}}
+      @keyframes pulseRingB{0%,100%{transform:scale(1);opacity:.18}50%{transform:scale(1.06);opacity:.35}}
+      @keyframes scan{0%{transform:translateY(-120px);opacity:0}15%{opacity:.22}70%{opacity:.18}100%{transform:translateY(640px);opacity:0}}
+      @keyframes blinkA{0%,100%{opacity:.45}50%{opacity:1}}
+      @keyframes blinkB{0%,100%{opacity:.3}50%{opacity:.9}}
+      @keyframes orbit1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+      @keyframes orbit2{from{transform:rotate(360deg)}to{transform:rotate(0deg)}}
+      @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+      @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+    </style>
+  </defs>
+  <rect width="1200" height="520" rx="24" fill="url(#bgGrad)"/>
+  <g opacity="0.08">
+    <path d="M0 40H1200M0 80H1200M0 120H1200M0 160H1200M0 200H1200M0 240H1200M0 280H1200M0 320H1200M0 360H1200M0 400H1200M0 440H1200M0 480H1200" stroke="#ffffff"/>
+    <path d="M60 0V520M120 0V520M180 0V520M240 0V520M300 0V520M360 0V520M420 0V520M480 0V520M540 0V520M600 0V520M660 0V520M720 0V520M780 0V520M840 0V520M900 0V520M960 0V520M1020 0V520M1080 0V520M1140 0V520" stroke="#ffffff"/>
+  </g>
+  <rect x="0" y="-120" width="1200" height="120" fill="url(#lineHot)" opacity="0.06" class="scanline"/>
+  <circle cx="210" cy="110" r="110" fill="#ff4d4d" opacity="0.07"/>
+  <circle cx="1020" cy="390" r="150" fill="#22d3ee" opacity="0.06"/>
+  <circle cx="1040" cy="90" r="80" fill="#7c3aed" opacity="0.08"/>
+  <g transform="translate(70,54)">
+    <text class="title">SYSTEMS / NETWORK / OPERATOR</text>
+    <text y="28" class="subtitle">generic categories only • no project names • public-safe profile graph</text>
+  </g>
+  <g transform="translate(760,46)">
+    <rect x="0" y="0" width="360" height="54" rx="14" class="box"/>
+    <text x="24" y="22" class="stat">50+ systems</text>
+    <text x="150" y="22" class="stat">5.5M+ footprint</text>
+    <text x="24" y="42" class="small">26+ local codebases • 3.5+ years • multi-machine ecosystem</text>
+  </g>
+  <g class="pulseCore">
+    <circle cx="600" cy="260" r="104" fill="url(#coreGlow)"/>
+    <circle cx="600" cy="260" r="76" fill="#0f172a" stroke="#ff5a5a" stroke-width="2.4" filter="url(#softGlow)"/>
+    <circle cx="600" cy="260" r="52" fill="#111827" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.2"/>
+    <text x="600" y="252" text-anchor="middle" class="label" style="font-size:20px;fill:#fff">SYSTEM</text>
+    <text x="600" y="278" text-anchor="middle" class="label" style="font-size:20px;fill:#fff">CORE</text>
+  </g>
+  <circle cx="600" cy="260" r="126" class="thin pulseRingA" stroke="url(#ringGrad)"/>
+  <circle cx="600" cy="260" r="168" class="thin pulseRingB" stroke="#22d3ee" opacity="0.22"/>
+  <circle cx="600" cy="260" r="214" class="thin" stroke="#ffffff" opacity="0.08"/>
+  <g class="orbit1">
+    <circle cx="726" cy="260" r="4" fill="#ff8a00" filter="url(#tinyGlow)"/>
+    <circle cx="600" cy="92" r="4" fill="#22d3ee" filter="url(#tinyGlow)"/>
+  </g>
+  <g class="orbit2">
+    <circle cx="814" cy="260" r="4" fill="#ff5a5a" filter="url(#tinyGlow)"/>
+    <circle cx="600" cy="46" r="4" fill="#a78bfa" filter="url(#tinyGlow)"/>
+  </g>
+  <path d="M600 260 C500 160,360 128,245 138" class="link flow1"/>
+  <path d="M600 260 C700 150,845 128,954 138" class="link flow2"/>
+  <path d="M600 260 C500 286,388 350,280 374" class="link flow2"/>
+  <path d="M600 260 C704 292,824 350,918 374" class="link flow1"/>
+  <path d="M600 260 C600 180,600 138,600 116" class="link flow3"/>
+  <path d="M600 260 C600 336,600 396,600 428" class="link flow3"/>
+  <path d="M600 260 C462 230,320 228,162 252" class="link flow1"/>
+  <path d="M600 260 C736 224,888 224,1038 252" class="link flow2"/>
+  <g class="floatA"><rect x="150" y="114" width="190" height="48" rx="12" class="box"/><text x="245" y="144" text-anchor="middle" class="label">AI / AGENTS</text></g>
+  <g class="floatB"><rect x="860" y="114" width="190" height="48" rx="12" class="box"/><text x="955" y="144" text-anchor="middle" class="label">DECISION SYSTEMS</text></g>
+  <g class="floatA"><rect x="505" y="92" width="190" height="48" rx="12" class="box"/><text x="600" y="122" text-anchor="middle" class="label">AUTOMATION</text></g>
+  <g class="floatB"><rect x="172" y="350" width="215" height="48" rx="12" class="box"/><text x="280" y="380" text-anchor="middle" class="label">SECURITY / RESEARCH</text></g>
+  <g class="floatA"><rect x="812" y="350" width="212" height="48" rx="12" class="box"/><text x="918" y="380" text-anchor="middle" class="label">INFRASTRUCTURE</text></g>
+  <g class="floatB"><rect x="60" y="228" width="204" height="48" rx="12" class="box"/><text x="162" y="258" text-anchor="middle" class="label">SIMULATION</text></g>
+  <g class="floatA"><rect x="936" y="228" width="204" height="48" rx="12" class="box"/><text x="1038" y="258" text-anchor="middle" class="label">AUTONOMOUS BOTS</text></g>
+  <g class="floatB"><rect x="492" y="404" width="216" height="48" rx="12" class="box"/><text x="600" y="434" text-anchor="middle" class="label">COMPUTE / DATA</text></g>
+  <rect x="116" y="180" width="104" height="34" rx="10" class="box"/><text x="168" y="202" text-anchor="middle" class="nodeText">LLM pipes</text>
+  <rect x="232" y="180" width="108" height="34" rx="10" class="box"/><text x="286" y="202" text-anchor="middle" class="nodeText">orchestration</text>
+  <rect x="856" y="180" width="102" height="34" rx="10" class="box"/><text x="907" y="202" text-anchor="middle" class="nodeText">execution</text>
+  <rect x="970" y="180" width="102" height="34" rx="10" class="box"/><text x="1021" y="202" text-anchor="middle" class="nodeText">modeling</text>
+  <rect x="70" y="292" width="92" height="34" rx="10" class="box"/><text x="116" y="314" text-anchor="middle" class="nodeText">interactive</text>
+  <rect x="174" y="292" width="106" height="34" rx="10" class="box"/><text x="227" y="314" text-anchor="middle" class="nodeText">probabilistic</text>
+  <rect x="940" y="292" width="92" height="34" rx="10" class="box"/><text x="986" y="314" text-anchor="middle" class="nodeText">network</text>
+  <rect x="1042" y="292" width="92" height="34" rx="10" class="box"/><text x="1088" y="314" text-anchor="middle" class="nodeText">compute</text>
+  <circle cx="245" cy="138" r="5" fill="#22d3ee" class="blinkA" filter="url(#tinyGlow)"/>
+  <circle cx="955" cy="138" r="5" fill="#ff8a00" class="blinkB" filter="url(#tinyGlow)"/>
+  <circle cx="600" cy="116" r="5" fill="#ff5a5a" class="blinkA" filter="url(#tinyGlow)"/>
+  <circle cx="280" cy="374" r="5" fill="#f472b6" class="blinkB" filter="url(#tinyGlow)"/>
+  <circle cx="918" cy="374" r="5" fill="#22d3ee" class="blinkA" filter="url(#tinyGlow)"/>
+  <circle cx="162" cy="252" r="5" fill="#a78bfa" class="blinkB" filter="url(#tinyGlow)"/>
+  <circle cx="1038" cy="252" r="5" fill="#ff5a5a" class="blinkA" filter="url(#tinyGlow)"/>
+  <circle cx="600" cy="428" r="5" fill="#ff8a00" class="blinkB" filter="url(#tinyGlow)"/>
+  <g transform="translate(70,480)">
+    <text class="small">most work private / experimental / iterative • public repos represent only the visible layer</text>
+  </g>
 </svg>
