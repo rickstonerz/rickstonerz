@@ -1,5 +1,9 @@
 # 🧠 Systems Builder | Multi-Domain Developer
 
+<p align="center">
+  <img src="./system-graph-insane.svg" alt="Systems Graph" width="100%" />
+</p>
+
 I build **complex, interconnected systems** across software, AI, simulation, and infrastructure.
 
 ---
@@ -52,6 +56,8 @@ I build **complex, interconnected systems** across software, AI, simulation, and
 - JavaScript / TypeScript
 - Python
 - C# (Unity)
+- C
+- Shell / Bash
 - C
 - Shell / Bash
 
